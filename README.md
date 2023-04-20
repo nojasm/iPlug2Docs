@@ -1,2 +1,3 @@
 # iPlug2Docs
-An alternative iPlug2 Documentation 
+An alternative iPlug2 Documentation
+---

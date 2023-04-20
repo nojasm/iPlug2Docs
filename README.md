@@ -1,14 +1,18 @@
 # iPlug2Docs
-| An alternative iPlug2 Documentation
+> An alternative iPlug2 Documentation
+
 ---
 
 This documentation is aimed at beginners in audio,
 C/C++ and iPlug2 development. It will only focus on developing VST3 plugins with the use of Visual Studio.
 
+**Some side-notes for understanding this documentation:**
+
 <span style="color: white; background-color: #f44; padding: 1px 7px; border-radius: 15px; text-transform: uppercase">unconfirmed</span>     This means that I am not sure if the following is correct.
 
 (<span style="color: #999; font-style: italic">What does this do?</span>)      This means that everyone is free to open a pull request to answer my question.
 
+---
 
 # Getting started
 To get started I recommend creating a `vst-dev` folder that will contain all your plugins as well as the `iPlug2` SDK, which you can simply clone from GitHub:
@@ -21,25 +25,25 @@ Visual Studio is the industry standard for C/C++ developing and also recommended
 After cloning, go into the `iPlug2` directory and pick `IPlugEffect` in the `Examples` folder. Double click the .sln (Visual Studio Solution) to open the corresponding Visual Studio Project.
 
 ## Other resources
-- (iPlug2 Official API Docs - doxygen)[https://iplug2.github.io/docs/]
-- (iPlug2 Official Wiki)[https://github.com/iPlug2/iPlug2/wiki]
-- (iPlug2 Forum)[https://iplug2.discourse.group/]
-- (iPlug2 Discord)[https://discord.gg/7h9HW8N9Ke]
-- (Oli Larkin - An Introduction to iPlug2)[https://www.youtube.com/watch?v=YT_0TEftO54&t=290s] by The Audio Programmer
+- [iPlug2 Official API Docs - doxygen](https://iplug2.github.io/docs/)
+- [iPlug2 Official Wiki](https://github.com/iPlug2/iPlug2/wiki)
+- [iPlug2 Forum](https://iplug2.discourse.group/)
+- [iPlug2 Discord](https://discord.gg/7h9HW8N9Ke)
+- [Oli Larkin - An Introduction to iPlug2](https://www.youtube.com/watch?v=YT_0TEftO54&t=290s) by *The Audio Programmer*
 
-## Tipps and Tricks
-In cases that you don't have a 100% done, handwritten, image-included documentation to hand, it can be useful to use Visual Studios tools like autocompletion, Go-To-Definition and Go-To-Declaration (Right click on variable).
+## Tips and Tricks
+In cases that you don't have a 100% done, handwritten, image-included documentation to hand, it can be useful to use Visual Studios tools like auto-completion, Go-To-Definition and Go-To-Declaration (Right click on variable).
 
 # Files
 Visual Studio shows our project files in the **Solution Explorer** (View -> Solution Explorer or CTRL+ALT+L). Note that sometimes the files are different than the ones shown in your normal file explorer, as VS treats files differently. In most cases everything works fine if the Solution Explorer shows them normally.
 
-Set <your-plugin>-vst as a startup project in the Solution Explorer using a right click and "Set as Startup Project".
+Set IPluginEffect-vst3 as a startup project in the Solution Explorer using a right click and "Set as Startup Project".
 
 Extend the project to reveal all of the source files.
 
 You should also set your Solution Configuration to "Debug" or "Trace" when developing and only switch it to "Release" when you actually plan to share the plugin somewhere. Make sure the Solution Platform is correct (You most likely use a an x64 device). You can find these options at the top of Visual Studio.
 
-[Solution Configuration and Platform](res/sol-conf.png)
+![Solution Configuration and Platform](/res/sol-conf.png)
 
 # A plugins structure
 A plugin is divided into two parts: The UI and the digital signal processing (DSP).

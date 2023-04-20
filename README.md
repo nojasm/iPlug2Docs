@@ -14,6 +14,34 @@ _**unconfirmed**_     This means that I am not sure if the following is correct.
 
 ---
 
+# Table Of Contents
+
+- [Getting started](#getting-started)
+	- [Other resources](#other-resources)
+	- [Tips and Tricks](#tips-and-tricks)
+- [Files](#files)
+- [A plugins structure](#a-plugins-structure)
+	- [config.h](#config.h)
+	- [IPlugEffect.h](#iplugeffect.h)
+	- [IPlugEffect.cpp](#iplugeffect.cpp)
+		- [Constructor](#constructor)
+- [UI](#ui)
+- [DSP](#dsp)
+- [Parameters](#parameters)
+- [Senders](#senders)
+- [Fonts](#fonts)
+- [Debugging](#debugging)
+- [Misc](#misc)
+	- [IPattern](#ipattern)
+	- [IColor](#icolor)
+	- [IRECT](#irect)
+	- [Drawing functions](#drawing-functions)
+	- [EFlags](#eflags)
+- [Using IControls](#using-icontrols)
+
+
+---
+
 # Getting started
 To get started I recommend creating a `vst-dev` folder that will contain all your plugins as well as the `iPlug2` SDK, which you can simply clone from GitHub:
 ```sh

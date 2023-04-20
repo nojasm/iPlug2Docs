@@ -8,9 +8,9 @@ C/C++ and iPlug2 development. It will only focus on developing VST3 plugins with
 
 **Some side-notes for understanding this documentation:**
 
-<span style="color: white; background-color: #f44; padding: 1px 7px; border-radius: 15px; text-transform: uppercase">unconfirmed</span>     This means that I am not sure if the following is correct.
+_**unconfirmed**_     This means that I am not sure if the following is correct.
 
-(<span style="color: #999; font-style: italic">What does this do?</span>)      This means that everyone is free to open a pull request to answer my question.
+<sup>_What does this do?_</sup>      This means that everyone is free to open a pull request to answer my question.
 
 ---
 
@@ -47,7 +47,7 @@ You should also set your Solution Configuration to "Debug" or "Trace" when devel
 
 # A plugins structure
 A plugin is divided into two parts: The UI and the digital signal processing (DSP).
-They both run independent from each other and communicate through so called (Senders)[#Senders].
+They both run independent from each other and communicate through so called [Senders](#Senders).
 
 
 ## config.h
@@ -69,10 +69,10 @@ Let's take a look at the most important values.
 | PLUG_COPYRIGHT_STR | A copyright string |
 | PLUG_CLASS_NAME | The name of the class the host (like your DAW) should use. Don't use quotations here |
 | BUNDLE_NAME, BUNDLE_MFR and BUNDLE_DOMAIN | Three strings defining the bundle identifier. This is similar to the package name in app development. Often the website of the developer is used: dev.jondoe.myplugin1. It is used to uniquely identify each plugin, even if they have the same name |
-| PLUG_CHANNEL_IO | <span style="color: white; background-color: #f44; padding: 1px 7px; border-radius: 15px; text-transform: uppercase">unconfirmed</span> Different options for input and output combinations seperated by a space. "1-1 2-2" means that you can either have 1 input, 1 output or 2 inputs, 2 outputs |
+| PLUG_CHANNEL_IO | _**unconfirmed**_ Different options for input and output combinations seperated by a space. "1-1 2-2" means that you can either have 1 input, 1 output or 2 inputs, 2 outputs |
 | PLUG_WIDTH & PLUG_HEIGHT | The width and height of your plugin in pixels |
-| VST3_SUBCATEGORY | <span style="color: white; background-color: #f44; padding: 1px 7px; border-radius: 15px; text-transform: uppercase">unconfirmed</span> Not quite sure but I think (those are the ones)[https://steinbergmedia.github.io/vst3_doc/vstinterfaces/group__plugType.html] |
-| ROBOTO_FN | The reference to the "Roboto Regular" font. See (fonts)[#fonts] |
+| VST3_SUBCATEGORY | _**unconfirmed**_ Not quite sure but I think (https://steinbergmedia.github.io/vst3_doc/vstinterfaces/group__plugType.html)[those are the ones] |
+| ROBOTO_FN | The reference to the "Roboto Regular" font. See [fonts](#fonts) |
 
 ## IPlugEffect.h
 This file is a so called header file and holds all declarations. You can declare and define an object in one line (`int a = 42;`), but you can also declare it first (`int a;`) and define it later on (`a = 42;`). C/C++ developers like to declare their variables, enumerations and classes in headers files that end on `.h`. Sometimes, when working with C++, the extensions `.hpp` is used to show that C++ is used, but this is not the case here.
@@ -80,7 +80,7 @@ This file is a so called header file and holds all declarations. You can declare
 In the header file
 
 ## IPlugEffect.cpp
-The first thing we do in our actual code is include the header file using `#include "IPlugEffect.h"`. This makes sure that all objects are already declared and ready to work with. We also include `IPlug_include_in_plug_src.h` (<span style="color: #999; font-style: italic">What does this do?</span>) as well as `IControls.h` which gives us some [control objects](#Using-IControls) to use.
+The first thing we do in our actual code is include the header file using `#include "IPlugEffect.h"`. This makes sure that all objects are already declared and ready to work with. We also include `IPlug_include_in_plug_src.h` <sup>_What does this do?_</sup> as well as `IControls.h` which gives us some [control objects](#Using-IControls) to use.
 
 ### Constructor
 The constructor is the starting point of every class, in our case `IPlugEffect`. This is also used to initialize the plugin, any variables, the UI and more.
@@ -102,7 +102,7 @@ Next, [parameters](#parameters) are defined.
 After that,
 See [this](https://github.com/iPlug2/iPlug2/wiki/Distributed-Plugins) to find out, why the next portion is wrapped inside `IPLUG_EDITOR`.
 
-The next step is to write a lambda function that creates the UI Window. We pass the plugin's width and height, the FPS (<span style="color: #999; font-style: italic">Is this the MAX-FPS or the FPS the plugin should try to reach?</span>) as well as a scale factor (<span style="color: #999; font-style: italic">Didn't understand that one yet</span>).
+The next step is to write a lambda function that creates the UI Window. We pass the plugin's width and height, the FPS <sup>_Is this the MAX-FPS or the FPS the plugin should try to reach?_</sup> as well as a scale factor <sup>_Didn't understand that one yet_</sup>.
 
 ```C++
 mMakeGraphicsFunc = [&]() {
@@ -113,7 +113,7 @@ mMakeGraphicsFunc = [&]() {
 The final step is to initialize our UI with another lambda function. See [UI](#ui) for further details.
 
 # UI
-The UI is initialized in the `mLayoutFunc` function. It passes a **IGraphics\*** object which represents our plugin's window. Here any fonts are loaded, settings defined and, most importantly, elements attached to the window. Those elements are objects of type `IControl`. Drawing is often not done in this function by the way, as it only ones once when the plugin is started (<span style="color: #999; font-style: italic">Does it run when the plugin window is opened again?</span>). Instead the backend UI library **IGraphics** goes through each attached control and checks if it is `dirty`. If it is, it redraws it using the IControl's `Draw()` function and sets it back to `clean`.
+The UI is initialized in the `mLayoutFunc` function. It passes a **IGraphics\*** object which represents our plugin's window. Here any fonts are loaded, settings defined and, most importantly, elements attached to the window. Those elements are objects of type `IControl`. Drawing is often not done in this function by the way, as it only ones once when the plugin is started <sup>_Does it run when the plugin window is opened again?_</sup>. Instead the backend UI library **IGraphics** goes through each attached control and checks if it is `dirty`. If it is, it redraws it using the IControl's `Draw()` function and sets it back to `clean`.
 For further information refer to [Using IControls](#using-icontrols).
 
 If you want to add a knob for example, you can do it like this:
@@ -176,7 +176,7 @@ Every **Init** function takes similar parameters:
 | listItems | List of const char* | Only used in InitEnum: A list of strings to use as options |
 | label | const char* | A suffix for the parameter. Something like "%", "s" or "ms" or whatever |
 | flags | const char* | Defines additional information, such as if the parameter can be automated. See [EFlags](#eflags) |
-| group | const char* | (<span style="color: #999; font-style: italic">Heellpp what are groups?</span>)
+| group | const char* | <sup>_Heellpp what are groups?_</sup>
 
 ---
 
@@ -218,9 +218,9 @@ void InitAngleDegrees(const char* name, double defaultVal = 0., double minVal = 
 void Init(const IParam& p, const char* searchStr = "", const char* replaceStr = "", const char* newGroup = "");
 ```
 
-<span style="border: 1px solid #ccc; border-radius: 15px; padding: 30px">
-We can pass our parameters to functions like `pGraphics->AttachControl(..., kGain)` to show that the parameter is representing that particular control. (<span style="color: #999; font-style: italic">What effects does this have?</span>)
-</span>
+
+> We can pass our parameters to functions like `pGraphics->AttachControl(..., kGain)` to show that the parameter is representing that particular control. <sup>_What effects does this have?_</sup>)
+
 
 # Senders
 - ISender

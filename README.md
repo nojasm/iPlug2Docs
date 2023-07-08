@@ -267,12 +267,14 @@ void Init(const IParam& p, const char* searchStr = "", const char* replaceStr = 
 Todo
 
 ## IColor
-You can create a new color using the `IColor` function. Notice that this is a function, not a class, that doesn't need the *new* operator. Also notice that the colors are in format `IColor(alpha, red, green, blue)`.
+You can create a new color using the `IColor` constructor. Notice that the colors are in format `IColor(alpha, red, green, blue)`.
 
-There are several predefined color constants, like COLOR_RED, COLOR_WHITE, and so on, defined in `IGraphics/IGraphicsStructs.h`.
+There are several predefined color constants, like COLOR_RED, COLOR_WHITE and so on, defined in `IGraphics/IGraphicsStructs.h`.
 
 ## IRECT
-Todo
+IRECT (Written in all caps) is a struct representing a rectangular area. Use the `IRECT` constructor like this: `IRECT(left, top, right, bottom)`.
+You can then use functions like `myRect.GetPadded(-5)` to create a new `IRECT` that is 5 units smaller on each side.
+iPlug2 also gives us some handy functions like `myRect.GetGridCell()` that lets us split up a rect into multiple, smaller sub-rects automatically.
 
 ## Drawing functions
 Todo

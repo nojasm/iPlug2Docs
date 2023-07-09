@@ -319,6 +319,7 @@ public:
 ```
 
 With that, you just have to create an instance of this class in the mLayoutFunc function:
+
 ```
 	// Let's keep all of this
 	mLayoutFunc = [&](IGraphics* pGraphics) {
@@ -334,6 +335,20 @@ With that, you just have to create an instance of this class in the mLayoutFunc 
     pGraphics->AttachControl(new ColorChangerControl(IRECT(50, 50, 200, 200)));
   };
 ```
+
+## IControl methods
+Beside the already used Draw() and OnMouseDown() methods, there are also other functions you can use.
+
+### Event functions
+Todo (See the OnMouse* functions [here](https://iplug2.github.io/docs/class_i_control.html#pub-methods))
+
+> Note on OnMouseOver: You need to set `pGraphics->enableMouseOver(true)` in the mLayoutFunc first, as this is a very CPU-Intense function for iPlug2.
+
+### File dialogs
+Todo
+
+### Communication between UI and DSP
+Todo (Search for "Senders" maybe)
 
 # Using layers
 Todo - (Don't actually know what they do yet)

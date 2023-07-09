@@ -16,10 +16,11 @@ _**unconfirmed**_     This means that I am not sure if the following is correct.
 
 # Table Of Contents
 
+- [iPlug2Docs](#iplug2docs)
+- [Table Of Contents](#table-of-contents)
 - [Getting started](#getting-started)
 	- [Other resources](#other-resources)
 	- [Tips and Tricks](#tips-and-tricks)
-- [Files](#files)
 - [A plugins structure](#a-plugins-structure)
 - [Files](#files)
 	- [config.h](#config.h)
@@ -39,7 +40,11 @@ _**unconfirmed**_     This means that I am not sure if the following is correct.
 	- [Drawing functions](#drawing-functions)
 	- [EFlags](#eflags)
 - [Using IControls](#using-icontrols)
-
+	- [IControl methods](#icontrol-methods)
+		- [Event functions](#event-functions)
+		- [File dialogs](#file-dialogs)
+		- [Communication between UI and DSP](#communication-between-ui-and-dsp)
+- [Using layers](#using-layers)
 
 ---
 
@@ -63,6 +68,11 @@ After cloning, go into the `iPlug2` directory and pick `IPlugEffect` in the `Exa
 ## Tips and Tricks
 In cases that you don't have a 100% done, handwritten, image-included documentation to hand, it can be useful to use Visual Studios tools like auto-completion, Go-To-Definition and Go-To-Declaration (Right click on variable).
 
+# A plugins structure
+A plugin is divided into two parts: The UI and the digital signal processing (DSP).
+They both run independent from each other and communicate through so called [Senders](#Senders).
+
+
 # Files
 Visual Studio shows our project files in the **Solution Explorer** (View -> Solution Explorer or CTRL+ALT+L). Note that sometimes the files are different than the ones shown in your normal file explorer, as VS treats files differently. In most cases everything works fine if the Solution Explorer shows them normally.
 
@@ -73,12 +83,6 @@ Extend the project to reveal all of the source files.
 You should also set your Solution Configuration to "Debug" or "Trace" when developing and only switch it to "Release" when you actually plan to share the plugin somewhere. Make sure the Solution Platform is correct (You most likely use a an x64 device). You can find these options at the top of Visual Studio.
 
 ![Solution Configuration and Platform](/res/sol-conf.png)
-
-# A plugins structure
-A plugin is divided into two parts: The UI and the digital signal processing (DSP).
-They both run independent from each other and communicate through so called [Senders](#Senders).
-
-# Files
 
 ## config.h
 As the name suggests, `config.h` is a configuration file containing `#define` statements for constant values. The `#define` keyword passes a constant to the compiler, which replaces it with the corresponding value in every file it compiles.
@@ -348,7 +352,7 @@ Todo (See the OnMouse* functions [here](https://iplug2.github.io/docs/class_i_co
 Todo
 
 ### Communication between UI and DSP
-Todo (Search for "Senders" maybe)
+See [ISender](#senders)
 
 # Using layers
 Todo - (Don't actually know what they do yet)

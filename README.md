@@ -285,4 +285,55 @@ Todo
 Todo
 
 # Using IControls
-Todo
+Rendering everything every frame not only is very CPU-Intense, but also just not logical when it comes to structuring your project. For this reason, iPlug2 uses so called `IControls`. An IControl is a class that has functions for drawing and event handling, for running code when the user interacts with an IControl. Lets create an IControl that turns green when clicked on.
+
+```
+// Create a new class that inherits from an IControl
+class ColorChangerControl : public IControl {
+public:
+	bool wasClicked = false;
+
+	// Initialize the base IControl class. We will later pass an IRECT to specify the IControl's size ("bounding rect")
+	ColorChangerControl(const IRECT& bounds) : IControl(bounds) {
+		// Do something when initialized
+	}
+
+	// The Draw() function; Takes an IGraphics object we can use to render/draw on
+	void Draw(IGraphics& g) {
+		if (wasClicked) {
+			// Fill the entire IControl with a red color
+			// mRECT is an IRECT defining the bounding box, automatically created by IControl() when passing <bounds>
+			g.FillRect(COLOR_GREEN, mRECT);
+		} else {
+			g.FillRect(COLOR_RED, mRECT);
+		}
+	}
+
+	void OnMouseDown(float x, float y, const IMouseMod& mod) {
+		wasClicked = true;
+
+		// Set this object dirty, meaning it will be re-rendered
+		SetDirty();  // This is redundant AFAIK, Draw() should get called automatically
+	}
+};
+```
+
+With that, you just have to create an instance of this class in the mLayoutFunc function:
+```
+	// Let's keep all of this
+	mLayoutFunc = [&](IGraphics* pGraphics) {
+    pGraphics->AttachCornerResizer(EUIResizerMode::Scale, false);
+    pGraphics->AttachPanelBackground(COLOR_GRAY);
+    pGraphics->LoadFont("Roboto-Regular", ROBOTO_FN);
+    
+	// Bounding box of the plugin window
+	const IRECT b = pGraphics->GetBounds();
+
+	// Attach a IControl to the plugin window
+	// Pass an IRECT defining the size of the IControl
+    pGraphics->AttachControl(new ColorChangerControl(IRECT(50, 50, 200, 200)));
+  };
+```
+
+# Using layers
+Todo - (Don't actually know what they do yet)

@@ -21,6 +21,7 @@ _**unconfirmed**_     This means that I am not sure if the following is correct.
 	- [Tips and Tricks](#tips-and-tricks)
 - [Files](#files)
 - [A plugins structure](#a-plugins-structure)
+- [Files](#files)
 	- [config.h](#config.h)
 	- [IPlugEffect.h](#iplugeffect.h)
 	- [IPlugEffect.cpp](#iplugeffect.cpp)
@@ -77,6 +78,7 @@ You should also set your Solution Configuration to "Debug" or "Trace" when devel
 A plugin is divided into two parts: The UI and the digital signal processing (DSP).
 They both run independent from each other and communicate through so called [Senders](#Senders).
 
+# Files
 
 ## config.h
 As the name suggests, `config.h` is a configuration file containing `#define` statements for constant values. The `#define` keyword passes a constant to the compiler, which replaces it with the corresponding value in every file it compiles.
